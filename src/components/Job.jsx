@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Job = ({ job }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -35,12 +36,12 @@ const Job = ({ job }) => {
               {job.location}
             </i>
           </div>
-          <a
-            href={`/job/${job.id}`}
+          <Link
+            to={`/jobs/${job.id}`}
             className="h-[36px] outline-none bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-sm rounded-md text-white"
           >
             Read more
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,10 +1,29 @@
- import Jobs from '../jobs.json'
-import Job from './Job';
-import ViewAllJobs from './ViewAllJobs';
+//  import Jobs from '../jobs.json'
+import { useState, useEffect } from "react";
+import Job from "./Job";
+import ViewAllJobs from "./ViewAllJobs";
+import Spinner from "./Spinner";
 
 function JobList({ onHome = false }) {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setloading] = useState(true);
 
-  const recentJobs = onHome ? Jobs.slice(0, 3) : Jobs;
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const apiUrl = onHome ? '/api/jobs?_limit=3' : '/api/jobs'
+      try {
+        const api = await fetch(apiUrl);
+        const data = await api.json();
+        setJobs(data);
+      }catch (error) {
+        console.log("Error", error);
+      } finally {
+        setloading(false)
+      }
+    }
+    fetchJobs()
+  }, []);
+  
 
   return (
     <>
@@ -15,9 +34,17 @@ function JobList({ onHome = false }) {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          { recentJobs.map((job) => (
-            <Job job={job} key={job.id}/>
-          )) }
+            {
+              loading ? (
+                <Spinner />
+                ) : (
+                  <>
+                    {jobs.map((job) => (
+                      <Job job={job} key={job.id} />
+                    ))}
+                  </>
+                )
+            }
           </div>
 
           <ViewAllJobs />
