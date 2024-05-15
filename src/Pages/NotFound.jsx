@@ -15,7 +15,7 @@ const NotFound = () => {
         className="text-white bg-indigo-700 hover:bg-indigo-900 rounde
         px-3 py-2 mt-4 rounded-md"
       >
-        Go Back to Home
+        Go Back to Home Page
       </Link>
     </section>
   );

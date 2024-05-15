@@ -12,7 +12,7 @@ function Navbar() {
       <div className="flex justify-center bg-indigo-600 border-b border-white items-center w-full">
         <div className="w-[90%] flex justify-between items-center flex-wrap p-3">
           <div className="flex items-center gap-2">
-          <img src={Logo} alt="" className='w-10 rounded-full' />
+          <img src={Logo} alt="Logo" className='w-10 rounded-full' />
             <h1 className="text-white text-[20px] font-bold">React Job</h1>
           </div>
           <div className="flex gap-4">
