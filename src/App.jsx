@@ -10,6 +10,8 @@ import JobsPage from "./Pages/JobsPage";
 import NotFound from "./Pages/NotFound";
 import JobPage from "./Pages/JobPage";
 
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
